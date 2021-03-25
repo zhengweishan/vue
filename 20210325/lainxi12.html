@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue - slot</title>
+</head>
+<body>
+<div id="app">
+    <btn>
+<!--        插槽只能使用template 标签 其他标签无法编译-->
+        <!--    第二 现在content打印出来的结果是 {data:'不满足快递费'}  所以输出是需要点data一下 data对应着第一步的data  -->
+        <template #head="content"><h1>我是父组件的内容-----{{content.data}}</h1></template>
+        <template #content><h3>内容</h3></template>
+        <template #foot><h2>底部</h2></template>
+    </btn>
+</div>
+<template id="btn">
+ <div>
+     <button>按钮</button>
+<!--            第一     :data这是随意取得一个名字= 后面是返回的值                 -->
+<!--  子传父   作用域插槽-->
+     <slot name="head" :data="content">子组件的默认值</slot>
+     <slot name="content"></slot>
+     <slot name="foot"></slot>
+ </div>
+</template>
+<script src="../vue.js"></script>
+<script>
+
+    var btn = {
+        template : '#btn',
+        data(){
+            return {
+                content:'不满足快递费',
+            }
+        }
+    }
+    new Vue({
+        el:'#app',
+        data(){
+            return {}
+        },
+        components:{
+            btn,
+        }
+    })
+</script>
+</body>
+</html>

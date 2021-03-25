@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+</head>
+<body>
+<div id="app">
+    <btn></btn>
+    <btn2></btn2>
+</div>
+<div id="app2">
+<!--    <btn></btn> btn是局部注册不能再#app以外的标签中使用-->
+    <btn2></btn2>
+    <!-- btn2 是全局注册可以在任意标签中使用   -->
+</div>
+<template id="btn">
+    <button>按钮</button>
+</template>
+<template id="btn2">
+    <button>按钮2</button>
+</template>
+<script src="../vue.js"></script>
+<script>
+    //第一种全局注册 可以在#app以外的标签中使用
+    // var btn2 = {
+    //     template: '#btn2',
+    // }
+    // Vue.component('btn2',btn2);
+    // 第二种全局注册的方法
+    Vue.component('btn2',{
+        template:'#btn2',
+    });
+    //局部注册 只能在绑定的#app里使用
+    var btn = {
+        template:'#btn',
+    };
+
+    new Vue({
+        el:'#app',
+        data(){
+            return {}
+        },
+        //局部注册
+        components:{
+            btn,
+        }
+    })
+    //测试用
+    new Vue({
+        el:'#app2',
+        data(){
+            return {}
+        }
+    })
+</script>
+</body>
+</html>
