@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>component</title>
+    <title>组件全局注册和局部注册</title>
 </head>
 <body>
 <div id="app">
@@ -10,9 +10,8 @@
     <btn2></btn2>
 </div>
 <div id="app2">
-<!--    <btn></btn> btn是局部注册不能再#app以外的标签中使用-->
+<!--    <btn></btn>-->
     <btn2></btn2>
-    <!-- btn2 是全局注册可以在任意标签中使用   -->
 </div>
 <template id="btn">
     <button>按钮</button>
@@ -22,36 +21,34 @@
 </template>
 <script src="../vue.js"></script>
 <script>
-    //第一种全局注册 可以在#app以外的标签中使用
-    // var btn2 = {
-    //     template: '#btn2',
-    // }
-    // Vue.component('btn2',btn2);
-    // 第二种全局注册的方法
+   /*第一种全局注册 可以在绑定得标签以外使用
+   var btn2 = {
+        template: '#btn2',
+    };
+    Vue.component('btn2',btn2);*/
+   //第二种全局注册
     Vue.component('btn2',{
-        template:'#btn2',
-    });
-    //局部注册 只能在绑定的#app里使用
+        template: '#btn2',
+    })
+    //局部变量
     var btn = {
         template:'#btn',
     };
-
     new Vue({
         el:'#app',
         data(){
-            return {}
+            return{}
         },
-        //局部注册
         components:{
             btn,
         }
     })
-    //测试用
+
     new Vue({
         el:'#app2',
         data(){
-            return {}
-        }
+            return{}
+        },
     })
 </script>
 </body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter - 过滤或者叫管道符</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <label>性别：</label>{{a | bbb}}
+        <input type="radio" name="" value="1" v-model="a"/>男
+        <input type="radio" name="" value="2"  v-model="a"/>女
+    </div>
+</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                a:'1'
+            }
+        },
+        filters:{
+            bbb:function (val) {
+                return Number(val)===1?'男':'女';
+            }
+        }
+    })
+</script>
+</body>
+</html>
