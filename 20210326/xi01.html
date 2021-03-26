@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter对日期进行格式化</title>
+</head>
+<body>
+<div id="app">{{datatime | abc}}</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                datatime:'',
+            }
+        },
+        mounted(){
+          this.getDate();
+        },
+        methods:{
+            getDate(){
+                var data = new Date();
+                // console.log(data);
+                var year = data.getFullYear();
+                // console.log(year)
+                var month = data.getMonth()+1;
+                    month = (''+month).padStart(2,'0');
+                // console.log(month)
+                var bay = data.getDate();
+                // console.log(bay);
+
+                this.datatime = `${year}-${month}-${bay}`;
+            }
+        },
+        filters:{
+            abc(val){
+                console.log(val);
+                var res = /\-/g;
+                return val.replace(res,'/');
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+</head>
+<body>
+<div id="app">
+    {{abc}}
+</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                value:'hello',
+            }
+        },
+        computed:{
+            abc(){
+              return this.value.split('').reverse().join('');
+                // console.log(this.value.split('').reverse().join(''));
+            }
+        }
+    })
+
+    const a = [1,50,7,30];
+    console.log(a);
+    a.sort();
+    console.log(a);
+
+    const b = [22,30,8,10,];
+     b.sort(function (c,d) {
+        return c - d;
+     })
+    console.log(b);
+</script>
+</body>
+</html>

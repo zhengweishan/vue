@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+<div id="app">
+<!--    插值表达式-->
+    <div>{{sex | formattersSex}}</div>
+</div>
+<script src="../vue.js"></script>
+<script>
+    //全局注册的过滤器
+    Vue.filter('formattersSex',function (val) {
+        console.log(val);
+        return sex = 1?'男':'女';
+    })
+    new Vue({
+        el:'#app',
+        data(){
+            return {
+                sex:1,
+            }
+        },
+        //局部注册的过滤器
+        filters:{
+            formatterSex(val){
+                console.log(val);
+                return sex = 1?'男':'女';
+            }
+        }
+    })
+</script>
+</body>
+</html>

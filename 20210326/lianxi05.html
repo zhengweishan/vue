@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter的链式操作</title>
+</head>
+<body>
+<div id="app">
+    <div>{{content | formatterContentFirst | formatterContentSecond}}</div>
+    <div :key="keyValue | gormstterValue(2)"></div>
+</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                content:'2021-03-26',
+                keyValue:5
+            }
+        },
+        filters:{
+            formatterContentFirst(val){
+                return val.replace('-','/');
+            },
+            formatterContentSecond(val){
+                return val.replace('-','/');
+            },
+            gormstterValue(val,n){
+                console.log(val = val + n);
+                return (val = val + n);
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

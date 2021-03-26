@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter对日期进行格式化</title>
+</head>
+<body>
+<div id="wk">
+    <div>{{dateNow | abc}}</div>
+</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#wk',
+        data(){
+            return{
+                dateNow:'',
+            }
+        },
+        mounted(){
+            this.getData();
+        },
+        methods:{
+            getData() {
+                //date  函数
+                //过去当前日期
+                var date = new Date();
+                //年
+                var year = date.getFullYear();
+                //月
+                var month = date.getMonth()+1;
+                // if (month<10){
+                //     // console.log(1)
+                //      month = `0${month}`;
+                // }
+                // String 将数组转换成字符串
+                // month = String(month).padStart(2,'0');
+                   month = (''+month).padStart(2,'0');
+                //日
+               // console.log(1)
+                var bay = date.getDate();
+                //使用模板字符串进行字符拼接
+                this.dateNow = `${year}-${month}-${bay}`;
+                // console.log(year);
+                // console.log(month);
+                // console.log(bay);
+                // console.log(dateStr);
+            }
+        },
+        filters:{
+            abc(val){
+                console.log(val);
+               // return val.replace('-','/').replace('-','/');
+                //正则  // ，g是代表global 全局匹配
+                var res = /\-/g;
+                return val.replace(res,'/');
+            }
+        }
+    })
+
+    //padStart ES6的新方法
+    //padStart ：不足5位，往开始位补0
+    //padEnd : 不足5位， 往后开始补0
+    var str = '2';
+    //从左边开始补充（5，‘0’）5代表几位数 0代表补充的数字
+    // str = str.padStart(5,'0');
+    //从右边开始补充 同上
+    str = str.padEnd(5,'0');
+    console.log(str);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter的传参</title>
+</head>
+<body>
+<div id="app">{{content | contentFn('today',num)}}</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                content:'filter传参',
+                num:1
+            }
+        },
+        filters:{
+            //过滤器的默认第一个参数就是 管道前面的值
+            contentFn(val,a,b){
+                console.log(val);// filter传参
+                console.log(a);// 'today'
+                console.log(b);// 1
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

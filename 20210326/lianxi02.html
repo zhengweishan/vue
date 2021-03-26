@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+<div id="app">
+    <!--    插值表达式-->
+    <div>{{sex | formatterSex}}</div>
+</div>
+<script src="../vue.js"></script>
+<script>
+    //当全局和局部注册的过滤器重名是（formatterSex），会执行局部过滤器，而不会取执行全局过滤器
+    //全局注册的过滤器
+    Vue.filter('formatterSex',function (val) {
+        console.log(val);
+        return sex = 1?'男':'女';
+    })
+    new Vue({
+        el:'#app',
+        data(){
+            return {
+                sex:1,
+            }
+        },
+        //局部注册的过滤器
+        filters:{
+            formatterSex(val){
+                console.log(val);
+                return sex = 1?'男':'女';
+            }
+        }
+    })
+</script>
+</body>
+</html>

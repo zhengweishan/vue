@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+</head>
+<body>
+<div id="app">
+    {{conmputedtext}}
+</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                text:'hello'
+            }
+        },
+        computed:{
+            conmputedtext(){
+                //reverse():将数组中的数据进行反转（倒序）
+                //split（）：一某种形式进行拆分
+                //join（）：将数组（类数组）中的每一项通过某种形式进行连接
+                return this.text.split('').reverse().join('');
+            }
+        }
+    })
+    const months = [1,20,8,50];
+    console.log(months,'排序前');
+    //sort 在不加参数的情况下只能按照第一位来做比较
+    months.sort();
+    console.log(months,'排序后');
+
+    const numArr = [11,9,34,21];
+    //可以传入一个回调函数，钩子函数，并且有两个参数，第一个减去第二个参数，那么是升序，反之，
+    //如果第二个参数减去第一个参数，那么就是降序，高阶函数
+    // numArr.sort(function (a,b) {
+    //     return a - b;
+    // })
+    numArr.sort(function (a,b) {
+        return b - a;
+    })
+    console.log(numArr);
+
+</script>
+</body>
+</html>

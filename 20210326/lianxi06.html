@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+</head>
+<body>
+<div id="app">
+    <div v-for="item in list">{{item.name}}--- <span>{{item.time}}</span></div>
+    <div>{{num}}---{{num2}}</div>
+    <div><input type="text" v-model="value"></div>
+    <div>{{now()}}</div>
+    <div>{{nows}}</div>
+</div>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                num:7,
+                value:''
+            }
+        },
+        methods:{
+            now() {
+                return Date.now();
+            }
+        },
+        //coputed:对属性进行运算
+        computed:{
+            //这里的属性不需要在data 里面定义一次
+            list(){
+                var arr = [
+                    {name:'新闻资讯1',time:'2021-03-26'},
+                    {name:'新闻资讯2',time:'2021-03-26'}
+                ];
+                return arr;
+            },
+            num2(){
+                return this.num * 5;
+            },
+            nows(){
+                return Date.now();
+            }
+        }
+    })
+</script>
+</body>
+</html>
